@@ -7,31 +7,79 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="./style.css">
   </head>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+          <!-- can be set to a link -->
+        <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" width="28" height="28">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+            <!--We can add in a small about us here with links to our own work-->
+              About
+            </a>
+            <a class="navbar-item">
+            <!--another page with emails etc-->
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+            <!--email to an outside inbox for page issues-->
+              Report an issue
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <!--Search box to find jobs based on own criteria or something similar-->
+            <input class="input is-primary search" type="text" placeholder="Search">
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
   <body>
   <section class="section">
     <div class="container">
-      <h1 class="title">
+    <h1 class="title">
         Web Development Success
-      </h1>
-      <p class="topBox`">
+    </h1>
+    
+    <p class="topBox`">
         <div class="topBoxButtons">
-            <div class="columns">
-                <div class="column salary is-one-third">
+            <div class="buttons is-centered">
                     <!-- Link to Salary based results-->
                     <button class="button">Salary</button>
-                </div>
-                <div class="column location is-one-third">
                     <!--link to location based results-->
                     <button class="button">Location</button>
-                </div>
-                <div class="column benfits is-one-third">
                     <!-- link to Benefits based results-->
                     <button class="button">Benefits</button>
-                </div>
               </div>
         </div>  
        
-      </p>
+    </p>
     </div>
   </section>
   </body>

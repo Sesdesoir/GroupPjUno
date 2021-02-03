@@ -1,3 +1,15 @@
+
+//Can default a blank search to pull up random jobs. limit is 500.
+fetch("http://api.dataatwork.org/v1/jobs?limit=100").then(function(response){
+    if(response.ok){
+        response.json().then(function(apidata){
+            console.log("base response")
+            console.log(apidata);
+            
+        })
+    }
+})
+
 //use this "http://api.dataatwork.org/v1/jobs/autocomplete?contains=" + search-entry; 
 fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=teacher").then(function(response){
     if(response.ok){

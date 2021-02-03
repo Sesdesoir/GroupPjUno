@@ -23,6 +23,7 @@ fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=teacher").then(fu
 // uuid is the attribute we want from the jobs ^^^ to plug into this one for related skills
 //From the array we get we go skills -> which gives objects of skills (we want) skill_name & description 
 //for each skill object.
+// use this "http://api.dataatwork.org/v1/jobs/" + uuid + "/related_skills"
 fetch("http://api.dataatwork.org/v1/jobs/2c92effbbca763fc5b05c0afaee2d3ea/related_skills").then(function(response){
     if(response.ok){
         response.json().then(function(apidata){

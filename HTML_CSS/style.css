@@ -1,10 +1,52 @@
+.navbar {
+    background-color: rgb(14, 14, 14) ;
+}
+.navbar-item{
+    color: white;
+}
+
+.navbar-link{
+    color: white;
+}
+
+.dropdown-navbar{
+    color: black;
+}
+
+.website-title{
+    font-family: 'Patua One', cursive;
+    font-style: bold;
+    color: black;
+    font;
+}
+
+.search-buttons{
+    font-family: 'Patua One', cursive;
+}
+
 h1 {
 text-align: center;
 } 
 
 p {
-align-content: right; 
-border: 1px solid black;
-border-left: 1px solid black;
-border-right: 1px solid black;
+    align-content: right; 
+    border: 1px solid white;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.card-header-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-content{
+    background-color: slategray;
+    font-family: 'Patua One', cursive;
+}
+
+.column{
+    border-style:solid;
+    border-color: slategray;
 }

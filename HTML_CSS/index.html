@@ -6,12 +6,16 @@
     <title>Web Development Success</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
   </head>
+
+
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
           <!-- can be set to a link -->
-        <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" width="28" height="28">
+        <img src="./PC.png" width="28" height="28">
       </a>
   
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -37,16 +41,16 @@
           </a>
   
           <div class="navbar-dropdown">
-            <a class="navbar-item">
+            <a class="navbar-item dropdown-navbar">
             <!--We can add in a small about us here with links to our own work-->
               About
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item dropdown-navbar">
             <!--another page with emails etc-->
               Contact
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item">
+            <a class="navbar-item dropdown-navbar">
             <!--email to an outside inbox for page issues-->
               Report an issue
             </a>
@@ -57,10 +61,10 @@
       </div>
     </div>
   </nav>
-  <body>
+  <body class="page-content">
   <section class="section">
     <div class="container">
-    <h1 class="title">
+    <h1 class="title website-title">
         Web Development Success
     </h1>
     
@@ -74,9 +78,9 @@
               <br>
               <div class="buttons is-centered">
                 <!-- drop down based on skill-->
-                <button class="button">Job Skill Requirements</button>
+                <button class="button search-buttons">Jobs</button>
                 <!--link to location based results-->
-                <button class="button">Job Listings</button>
+                <button class="button search-buttons">Skills</button>
                 
           </div>
           <br>
@@ -94,7 +98,7 @@
           </p>
         </header>
         <div class="card-content">
-          <div class="content">
+          <div class="content card-text-content">
            Job info
             <!--job listing info-->
            <br>
@@ -113,7 +117,7 @@
           </p>
         </header>
         <div class="card-content">
-          <div class="content">
+          <div class="content card-text-content">
            Job info
             <!--job listing info-->
            <br>
@@ -132,7 +136,27 @@
           </p>
         </header>
         <div class="card-content">
-          <div class="content">
+          <div class="content card-text-content">
+           Job info
+           
+            <!--job listing info-->
+           <br>
+          </div>
+        </div>
+       <footer class="card-footer">
+          <a href="#" class="card-footer-item">Link</a>
+        </footer>
+      </div> 
+
+      <div class="card column is-one-fifth">
+        <header class="card-header">
+          <p class="card-header-title is-centered">
+            <!--Job listing-->
+            Job Name
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content card-text-content">
            Job info
             <!--job listing info-->
            <br>
@@ -151,8 +175,9 @@
           </p>
         </header>
         <div class="card-content">
-          <div class="content">
+          <div class="content card-text-content">
            Job info
+           
             <!--job listing info-->
            <br>
           </div>
@@ -170,26 +195,7 @@
           </p>
         </header>
         <div class="card-content">
-          <div class="content">
-           Job info
-            <!--job listing info-->
-           <br>
-          </div>
-        </div>
-       <footer class="card-footer">
-          <a href="#" class="card-footer-item">Link</a>
-        </footer>
-      </div> 
-
-      <div class="card column is-one-fifth">
-        <header class="card-header">
-          <p class="card-header-title is-centered">
-            <!--Job listing-->
-            Job Name
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
+          <div class="content card-text-content">
            Job info
             <!--job listing info-->
            <br>

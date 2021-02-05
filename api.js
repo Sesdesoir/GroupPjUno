@@ -27,7 +27,7 @@ for(var i =0; i<10; i++){
         if(response.ok){
             response.json().then(function(apidata){
                 console.log("Related skills");
-                for(var i = 0; i<10){
+                for(var i = 0; i<10; i++){
                      var randomI= Math.floor(Math.random()*apidata.skills.length)
                 console.log(apidata.skills[randomI].skill_name);
                 console.log(apidata.skills[randomI].description);

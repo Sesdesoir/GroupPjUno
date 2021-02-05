@@ -1,25 +1,47 @@
+// resultsCards is the div where all the search results will be placed
 var resultsCards = document.getElementById('results-cards');
-var fetchButton = document.getElementById('job-search');
 
-function getApi() {
+// Initialization function
+function init() {
+
+  $(document).ready(function () {
+      $("#job-search").click(function (event) {
+        event.preventDefault();
+          if ($('input').val().length === 0) {
+            //  && $('#zipcode').val().length === 0 (This code will be added to the above if statement when we add location search functionality)
+              alert("No entry detected! Please enter an occupation.");
+          } else {
+              jobSearch();
+          }
+      });
+  });
+}
+
+// Run the initialization function
+init()
+
+// This function searches the Github Jobs API for listings based on input, then loads the results to the page
+function jobSearch() {
+    resultsCards.innerHTML = "";
     var searchTerm = "";
     searchTerm = "description=" + document.getElementById("search-bar").value;
 
+    // These two commented out lines of code were for the location search bar, they'll be added to the final version later
     // var searchLocation = "";
     // searchLocation = "location=" + document.getElementById("location-bar").value;
 
-    // fetch request gets a list of jobs with the description javascript
+    // fetch request gets a list of jobs with the description
     // var requestUrl = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json?' + searchTerm + "&" + searchLocation;
     var requestUrl = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json?' + searchTerm;
-    console.log(requestUrl);
 
+  // Fetch request to Github Jobs API
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       console.log(data)
-      //Loop over the data to generate a table, each table row will have a link to the repo url
+      // Loop over the returned data to create a card for each job listing
       for (var i = 0; i < data.length; i++) {
         // Creating all the elements within the card
         var createCardColumn = document.createElement('div');
@@ -57,7 +79,3 @@ function getApi() {
 });
 }
 
-fetchButton.addEventListener('click', function(event) {
-event.preventDefault();
-getApi();
-});

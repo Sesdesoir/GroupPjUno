@@ -5,27 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 
 <body>
+
+    <p class="topBox`">
+    <div class="topBoxButtons">
+        <br>
+        <div>
+            <!--Search box to find jobs based on own criteria or something similar-->
+            <input class="input is-primary search" type="text" placeholder="Search" id="searchbar">
+        </div>
+        <div>
+            <input class="input" type="number" placeholder="Zip code" id="zipcode">
+        </div>
+        <br>
+        <div class="buttons is-centered">
+            <!-- drop down based on skill-->
+            <button class="button" id="btn1">Job Skill Requirements</button>
+            <!--link to location based results-->
+            <button class="button" id="btn2">Job Listings</button>
+
+        </div>
+        <br>
+    </div>
+
+    </p>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script type="text/javascript">
 
-        var salary = $("#salary");
-        var location = $("#location");
-        var benefits = $("#benefits");
+        var searchDiv = $("#searchDiv")
         var search = $("#searchbar");
-        var nav = $("#nav");
-        var job1 = $("#job1");
-        var job2 = $("#job2");
-        var job3 = $("#job3");
-
+        var jobBtn = $("#btn1");
+        var skillsBtn = $("#btn2");
+        var zip = $("#zipcode");
 
         function init() {
 
+            $(document).ready(function () {
+                $("button").click(function () {
+                    if ($('input').val().length === 0 && $('#zipcode').val().length === 0) {
+                        alert("No entry detected! Please enter an occupation.");
+                    } else {
+                        alert(search.val());
+                    }
+                });
+            });
+
+            $(jobBtn).on("click", function () {
+                console.log("It works #1!");
+            });
+
+            $(skillsBtn).on("click", function () {
+                console.log("It works #2!");
+            });
         }
+
+        init();
 
     </script>
 </body>

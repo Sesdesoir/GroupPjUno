@@ -35,12 +35,11 @@ for(var i =0; i<10; i++){
         })
         }
     })
+    //should clear the global uuid array variable back to empty for new searches
+    uuids = [];
 }
 
 
-
-
-//Everything after this point is reference
 //Can default a blank search to pull up random jobs. limit is 500.
 fetch("http://api.dataatwork.org/v1/jobs?limit=100").then(function(response){
     if(response.ok){
@@ -51,6 +50,14 @@ fetch("http://api.dataatwork.org/v1/jobs?limit=100").then(function(response){
         })
     }
 })
+
+
+//Everything after this point is reference
+
+
+
+
+
 
 //use this "http://api.dataatwork.org/v1/jobs/autocomplete?contains=" + search-entry; 
 fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=teacher").then(function(response){

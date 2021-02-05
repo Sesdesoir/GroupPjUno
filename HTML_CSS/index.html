@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web Development Success</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -65,141 +65,29 @@
     </h1>
     
     <p class="topBox`">
-        <div class="topBoxButtons">
+        <form class="topBoxButtons">
             <br>
               <div>
               <!--Search box to find jobs based on own criteria or something similar-->
-            <input class="input is-primary search" type="text" placeholder="Search">
+                <label for="search-bar"></label>
+                <input class="input is-primary search" type="text" placeholder="Search" id="search-bar" name="search-bar">
               </div>
               <br>
               <div class="buttons is-centered">
                 <!-- drop down based on skill-->
                 <button class="button">Job Skill Requirements</button>
                 <!--link to location based results-->
-                <button class="button">Job Listings</button>
-                
-          </div>
+                <button class="button" id="job-search" type="submit">Job Listings</button>
+              </div>
           <br>
-        </div>  
+        </form>  
        
     </p>
     </div>
     <br>
-    <div class= "columns is-vcentered is-multiline">
-      <div class="card column is-one-fifth">
-        <header class="card-header">
-          <p class="card-header-title is-centered">
-            <!--Job listing-->
-            Job Name
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-           Job info
-            <!--job listing info-->
-           <br>
-          </div>
-        </div>
-       <footer class="card-footer">
-          <a href="#" class="card-footer-item">Link</a>
-        </footer>
-      </div> 
 
-      <div class="card column is-one-fifth">
-        <header class="card-header">
-          <p class="card-header-title is-centered">
-            <!--Job listing-->
-            Job Name
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-           Job info
-            <!--job listing info-->
-           <br>
-          </div>
-        </div>
-       <footer class="card-footer">
-          <a href="#" class="card-footer-item">Link</a>
-        </footer>
-      </div> 
-
-      <div class="card column is-one-fifth">
-        <header class="card-header">
-          <p class="card-header-title is-centered">
-            <!--Job listing-->
-            Job Name
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-           Job info
-            <!--job listing info-->
-           <br>
-          </div>
-        </div>
-       <footer class="card-footer">
-          <a href="#" class="card-footer-item">Link</a>
-        </footer>
-      </div> 
-
-      <div class="card column is-one-fifth">
-        <header class="card-header">
-          <p class="card-header-title is-centered">
-            <!--Job listing-->
-            Job Name
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-           Job info
-            <!--job listing info-->
-           <br>
-          </div>
-        </div>
-       <footer class="card-footer">
-          <a href="#" class="card-footer-item">Link</a>
-        </footer>
-      </div> 
-
-      <div class="card column is-one-fifth">
-        <header class="card-header">
-          <p class="card-header-title is-centered">
-            <!--Job listing-->
-            Job Name
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-           Job info
-            <!--job listing info-->
-           <br>
-          </div>
-        </div>
-       <footer class="card-footer">
-          <a href="#" class="card-footer-item">Link</a>
-        </footer>
-      </div> 
-
-      <div class="card column is-one-fifth">
-        <header class="card-header">
-          <p class="card-header-title is-centered">
-            <!--Job listing-->
-            Job Name
-          </p>
-        </header>
-        <div class="card-content">
-          <div class="content">
-           Job info
-            <!--job listing info-->
-           <br>
-          </div>
-        </div>
-       <footer class="card-footer">
-          <a href="#" class="card-footer-item">Link</a>
-        </footer>
-      </div> 
-
+      <!-- Search result cards will populate in this div -->
+    <div class= "columns is-vcentered is-multiline" id="results-cards">
       
     </div>
 
@@ -209,5 +97,6 @@
       
 
   </section>
+  <script src="./assets/js/script.js"></script>
   </body>
 </html>

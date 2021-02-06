@@ -67,9 +67,9 @@ function jobSearch() {
         cardTitle.textContent = data[i].title;
         // Some of the company URLs are not provided or, annoyingly, just "http:". This conditional links the company url only if the URL provided by the API is not empty or "http:"
         if (data[i].company_url !== null && data[i].company_url !== "http:") {
-          innerCardContent.innerHTML = "<strong>Company: </strong><a href=" + data[i].company_url + ">" + data[i].company + "</a>"+ "<br><strong> Location: </strong>" + data[i].location;
+          innerCardContent.innerHTML = "<strong>Company: </strong><a href=" + data[i].company_url + ">" + data[i].company + "</a>"+ "<br><strong> Location: </strong>" + data[i].location + " (" + data[i].type + ")";
         } else {
-          innerCardContent.innerHTML = "<strong>Company: </strong>" + data[i].company + "<br><strong> Location: </strong>" + data[i].location;
+          innerCardContent.innerHTML = "<strong>Company: </strong>" + data[i].company + "<br><strong> Location: </strong>" + data[i].location + " (" + data[i].type + ")";
         }
         cardLink.textContent = "Click here to learn more";
         cardLink.href = data[i].url;

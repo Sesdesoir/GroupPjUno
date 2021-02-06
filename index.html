@@ -3,15 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Web Development Success</title>
+
+    <title>Web Dev Success</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
   </head>
+  
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
           <!-- can be set to a link -->
-        <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" width="28" height="28">
+        <img src="assets/images/PC.png" width="28" height="28">
       </a>
   
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -37,16 +41,17 @@
           </a>
   
           <div class="navbar-dropdown">
-            <a class="navbar-item">
+            <a class="navbar-item dropdown-navbar">
             <!--We can add in a small about us here with links to our own work-->
               About
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item dropdown-navbar">
             <!--another page with emails etc-->
               Contact
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item">
+
+            <a class="navbar-item dropdown-navbar">
             <!--email to an outside inbox for page issues-->
               Report an issue
             </a>
@@ -57,15 +62,15 @@
       </div>
     </div>
   </nav>
-  <body>
-  <section class="section">
-    <div class="container">
-    <h1 class="title">
-        Web Development Success
-    </h1>
+  <body class="page-content">
+    <section class="section">
+      <div class="container topBox">
+        <h1 class="title website-title">
+          < / >
+        </h1>
     
-    <p class="topBox`">
-        <form class="topBoxButtons">
+        <p class="topBoxItems">
+          <form class="topBoxButtons">
             <br>
               <div>
               <!--Search box to find jobs based on own criteria or something similar-->
@@ -75,19 +80,16 @@
               <br>
               <div class="buttons is-centered">
                 <!-- drop down based on skill-->
-                <button class="button">Job Skill Requirements</button>
+                <button class="button search-buttons" id="job-search" type="submit">Jobs</button>
                 <!--link to location based results-->
-                <button class="button" id="job-search" type="submit">Job Listings</button>
-              </div>
-          <br>
+                <button class="button search-buttons">Skills</button>
+            </div>
+            <br>
         </form>  
-    </p>
+       </p>
     </div>
     <br>
-
-      <!-- Search result cards will populate in this div -->
-    <div class= "columns is-vcentered is-multiline" id="results-cards">
-      
+    <div class= "columns is-vcentered is-multiline card-background" id="results-cards">
     </div>
 
   </section>

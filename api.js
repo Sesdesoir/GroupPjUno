@@ -74,7 +74,8 @@ function getskills(){
         }
         //end first fetch
         })
-        uuids = [];   
+        uuids = [];
+        jobTitles = [];
  //end function call
 }
 

@@ -37,6 +37,10 @@ function jobSearch() {
   // Fetch request to Github Jobs API
   fetch(requestUrl)
     .then(function (response) {
+      var responseStatus = response.status;
+      if (responseStatus !== 200) {
+        resultsCards.textContent = "Error: " + responseStatus + " | Please refresh the page and try again"
+      }
       return response.json();
     })
     .then(function (data) {

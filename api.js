@@ -1,36 +1,42 @@
-//In Current form is workeing and generates 1 card
+//Now created multiple cards with their respective elements
 function getskills(){
         var uuids = [];
-        //element creation
-        var createCardColumn = document.createElement('div');
-        createCardColumn.className = "card column is-one-fifth";
-        var cardHeader = document.createElement('header');
-        cardHeader.className = "card-header";
-        var cardTitle = document.createElement('p');
-        cardTitle.className = "card-header-title is-centered";
-        var cardContent = document.createElement('div');
-        cardContent.className = "card-content";
-        var innerCardContent = document.createElement('div');
-        innerCardContent.className = "content";
-        var cardFooter = document.createElement('footer');
-        cardFooter.className = "card-footer";
-
+        var jobTitles = [];
         //first fetch
         fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=teacher").then(function(response){
             if(response.ok){
             response.json().then(function(apidata){
                 console.log("Jobs:");
                 console.log(apidata);
-            
-                uuids.push(apidata[0].uuid);
-                cardTitle.textContent = apidata[0].suggestion;
+                for(var i=0; i<10; i++){
+                uuids.push(apidata[i].uuid);
+                jobTitles.push(apidata[i].suggestion);
+                }  
             }).then(function(){
                 //second fetch
-                fetch("http://api.dataatwork.org/v1/jobs/" + uuids[0] + "/related_skills").then(function(respond){
+                //I need this part done per job
+                for(var i=0; i<uuids.length; i++){
+                fetch("http://api.dataatwork.org/v1/jobs/" + uuids[i] + "/related_skills").then(function(respond){
                 if(respond.ok){
                 respond.json().then(function(data){
                 console.log("Related skills");
+                 //html element creation
+                 var createCardColumn = document.createElement('div');
+                 createCardColumn.className = "card column is-one-fifth";
+                 var cardHeader = document.createElement('header');
+                 cardHeader.className = "card-header";
+                 var cardTitle = document.createElement('p');
+                 cardTitle.className = "card-header-title is-centered";
+                 var cardContent = document.createElement('div');
+                 cardContent.className = "card-content";
+                 var innerCardContent = document.createElement('div');
+                 innerCardContent.className = "content";
+                 var cardFooter = document.createElement('footer');
+                 cardFooter.className = "card-footer"; 
+
+                 cardTitle.textContent = jobTitles[i];   
                 for(var j = 0; j<10; j++){
+                    //random "i" value to get a random skill and its description
                      var randomI= Math.floor(Math.random()*data.skills.length)
                     console.log(data.skills[randomI].skill_name);
                     console.log(data.skills[randomI].description);
@@ -44,27 +50,25 @@ function getskills(){
                     p4description.textContent = skillDescription;
                     innerCardContent.appendChild(p4skill);
                     innerCardContent.appendChild(p4description); 
-                     //Appending content here
-                     resultsCards.appendChild(createCardColumn);
-                    createCardColumn.appendChild(cardHeader);
-                    cardHeader.appendChild(cardTitle);
-                    createCardColumn.appendChild(cardContent);
-                    cardContent.appendChild(innerCardContent);
-                    createCardColumn.appendChild(cardFooter);
-                    console.log(uuids + " Round "+ j);
-                    uuids = [];
                     //end of j for
                     }
-                    
+                   //Appending content here
+                   resultsCards.appendChild(createCardColumn);
+                   createCardColumn.appendChild(cardHeader);
+                   cardHeader.appendChild(cardTitle);
+                   createCardColumn.appendChild(cardContent);
+                   cardContent.appendChild(innerCardContent);
+                   createCardColumn.appendChild(cardFooter); 
                 }) //end 2nd fetch function data
                 } // end 2nd api respond.ok
             }) //end of 2nd fetch
-            
+            } //end of for loop
             })
             //end first fetch if(response.ok)
         }
         //end first fetch
-        })   
+        })
+        uuids = [];   
  //end function call
 }
 

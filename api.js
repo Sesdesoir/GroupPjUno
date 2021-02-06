@@ -1,7 +1,9 @@
-//Now created multiple cards with their respective elements
+//use this "http://api.dataatwork.org/v1/jobs/autocomplete?contains=" + search-entry;
+//Updated for titles to work! And the one fifth column is removed. We'll probably want bottom margins.
 function getskills(){
         var uuids = [];
         var jobTitles = [];
+        var counter=0;
         //first fetch
         fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=teacher").then(function(response){
             if(response.ok){
@@ -14,6 +16,7 @@ function getskills(){
                 }  
             }).then(function(){
                 //second fetch
+                //
                 //I need this part done per job
                 for(var i=0; i<uuids.length; i++){
                 fetch("http://api.dataatwork.org/v1/jobs/" + uuids[i] + "/related_skills").then(function(respond){
@@ -22,10 +25,10 @@ function getskills(){
                 console.log("Related skills");
                  //html element creation
                  var createCardColumn = document.createElement('div');
-                 createCardColumn.className = "card column";
+                 //createCardColumn.className = "card column";
                  var cardHeader = document.createElement('header');
                  cardHeader.className = "card-header";
-                 var cardTitle = document.createElement('p');
+                 var cardTitle = document.createElement('h2');
                  cardTitle.className = "card-header-title is-centered";
                  var cardContent = document.createElement('div');
                  cardContent.className = "card-content";
@@ -33,8 +36,11 @@ function getskills(){
                  innerCardContent.className = "content";
                  var cardFooter = document.createElement('footer');
                  cardFooter.className = "card-footer"; 
-
-                 cardTitle.textContent = jobTitles[i];   
+                 console.log("value of i "+ counter);  
+                 console.log(jobTitles[counter]);
+                 cardTitle.textContent = jobTitles[counter];
+                 counter++
+                 cardHeader.appendChild(cardTitle);   
                 for(var j = 0; j<10; j++){
                     //random "i" value to get a random skill and its description
                      var randomI= Math.floor(Math.random()*data.skills.length)
@@ -55,7 +61,7 @@ function getskills(){
                    //Appending content here
                    resultsCards.appendChild(createCardColumn);
                    createCardColumn.appendChild(cardHeader);
-                   cardHeader.appendChild(cardTitle);
+                   
                    createCardColumn.appendChild(cardContent);
                    cardContent.appendChild(innerCardContent);
                    createCardColumn.appendChild(cardFooter); 

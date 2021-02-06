@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Web Dev Success</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
   </head>
-
-
+  
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
@@ -50,6 +50,7 @@
               Contact
             </a>
             <hr class="navbar-divider">
+
             <a class="navbar-item dropdown-navbar">
             <!--email to an outside inbox for page issues-->
               Report an issue
@@ -69,34 +70,30 @@
         </h1>
     
         <p class="topBoxItems">
-          
-            <div class="topBoxButtons">
+          <form class="topBoxButtons">
             <br>
               <div>
               <!--Search box to find jobs based on own criteria or something similar-->
-                <input class="input is-primary search" type="text" placeholder="Search">
+                <label for="search-bar"></label>
+                <input class="input is-primary search" type="text" placeholder="Search" id="search-bar" name="search-bar">
               </div>
               <br>
               <div class="buttons is-centered">
                 <!-- drop down based on skill-->
-                <button class="button search-buttons">Jobs</button>
+                <button class="button search-buttons" id="job-search" type="submit">Jobs</button>
                 <!--link to location based results-->
                 <button class="button search-buttons">Skills</button>
-                
             </div>
             <br>
-        </div>  
+        </form>  
        </p>
     </div>
     <br>
-    <div class= "columns is-vcentered is-multiline card-background">
+    <div class= "columns is-vcentered is-multiline card-background" id="results-cards">
     </div>
 
-      
-      
-    
-      
-
   </section>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./assets/js/script.js"></script>
   </body>
 </html>

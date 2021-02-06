@@ -16,8 +16,7 @@
 .website-title{
     font-family: 'Patua One', cursive;
     font-style: bold;
-    color: black;
-    font;
+    color:white;
 }
 
 .search-buttons{
@@ -29,10 +28,9 @@ text-align: center;
 } 
 
 p {
-    align-content: right; 
-    border: 1px solid white;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    text-align: center;
+    align-content: center; 
+    border: 1px solid white;   
 }
 
 .card-header-title {
@@ -41,8 +39,12 @@ p {
     text-overflow: ellipsis;
 }
 
+.topbox{
+       background-color: black;
+   }
+
 .page-content{
-    background-color: slategray;
+    background-color: black;
     font-family: 'Patua One', cursive;
 }
 
@@ -50,3 +52,12 @@ p {
     border-style:solid;
     border-color: slategray;
 }
+
+.topBoxItems{
+
+}
+
+.card-background{
+    background-color: darkslategray;
+}
+

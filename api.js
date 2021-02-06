@@ -22,7 +22,7 @@ function getskills(){
                 console.log("Related skills");
                  //html element creation
                  var createCardColumn = document.createElement('div');
-                 createCardColumn.className = "card column is-one-fifth";
+                 createCardColumn.className = "card column";
                  var cardHeader = document.createElement('header');
                  cardHeader.className = "card-header";
                  var cardTitle = document.createElement('p');

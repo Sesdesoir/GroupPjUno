@@ -1,42 +1,71 @@
-//global var because I can't figure out how to use .then return values
-var uuids = [];
-//use this "http://api.dataatwork.org/v1/jobs/autocomplete?contains=" + search-entry; 
-fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=teacher").then(function(response){
-    if(response.ok){
-        response.json().then(function(apidata){
-            console.log("Jobs:");
-            console.log(apidata);
-            for (var i = 0; i<10; i++){
-                uuids.push(apidata[i].uuid);
-            }
-         //This .then was to make sure the .push above was functioning properly 
-         //Remove for actual implementation
-        }).then(function(){
-            console.log("uuids x10");
-            for(var i = 0; i<uuids.length;i++){
-                console.log(uuids[i]);
-            }
-        })
-        //end remove
-    }
-    
-})
+//In Current form is workeing and generates 1 card
+function getskills(){
+        var uuids = [];
+        //element creation
+        var createCardColumn = document.createElement('div');
+        createCardColumn.className = "card column is-one-fifth";
+        var cardHeader = document.createElement('header');
+        cardHeader.className = "card-header";
+        var cardTitle = document.createElement('p');
+        cardTitle.className = "card-header-title is-centered";
+        var cardContent = document.createElement('div');
+        cardContent.className = "card-content";
+        var innerCardContent = document.createElement('div');
+        innerCardContent.className = "content";
+        var cardFooter = document.createElement('footer');
+        cardFooter.className = "card-footer";
 
-for(var i =0; i<10; i++){
-    fetch("http://api.dataatwork.org/v1/jobs/" + uuids[i] + "/related_skills").then(function(response){
-        if(response.ok){
+        //first fetch
+        fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=teacher").then(function(response){
+            if(response.ok){
             response.json().then(function(apidata){
+                console.log("Jobs:");
+                console.log(apidata);
+            
+                uuids.push(apidata[0].uuid);
+                cardTitle.textContent = apidata[0].suggestion;
+            }).then(function(){
+                //second fetch
+                fetch("http://api.dataatwork.org/v1/jobs/" + uuids[0] + "/related_skills").then(function(respond){
+                if(respond.ok){
+                respond.json().then(function(data){
                 console.log("Related skills");
-                for(var i = 0; i<10; i++){
-                     var randomI= Math.floor(Math.random()*apidata.skills.length)
-                console.log(apidata.skills[randomI].skill_name);
-                console.log(apidata.skills[randomI].description);
-            }
-        })
+                for(var j = 0; j<10; j++){
+                     var randomI= Math.floor(Math.random()*data.skills.length)
+                    console.log(data.skills[randomI].skill_name);
+                    console.log(data.skills[randomI].description);
+                    var skillName = data.skills[randomI].skill_name;
+                    var skillDescription = data.skills[randomI].description;
+                    var p4skill =document.createElement("p");
+                    var p4description = document.createElement("p");
+                    p4skill.className = "pskill";
+                    p4description.className = "pdescription";
+                    p4skill.textContent = skillName;
+                    p4description.textContent = skillDescription;
+                    innerCardContent.appendChild(p4skill);
+                    innerCardContent.appendChild(p4description); 
+                     //Appending content here
+                     resultsCards.appendChild(createCardColumn);
+                    createCardColumn.appendChild(cardHeader);
+                    cardHeader.appendChild(cardTitle);
+                    createCardColumn.appendChild(cardContent);
+                    cardContent.appendChild(innerCardContent);
+                    createCardColumn.appendChild(cardFooter);
+                    console.log(uuids + " Round "+ j);
+                    uuids = [];
+                    //end of j for
+                    }
+                    
+                }) //end 2nd fetch function data
+                } // end 2nd api respond.ok
+            }) //end of 2nd fetch
+            
+            })
+            //end first fetch if(response.ok)
         }
-    })
-    //should clear the global uuid array variable back to empty for new searches
-    uuids = [];
+        //end first fetch
+        })   
+ //end function call
 }
 
 

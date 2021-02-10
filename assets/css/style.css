@@ -61,3 +61,7 @@ p {
     background-color: darkslategray;
     color: white;
 }
+
+.pskill{
+    font-weight: bold;
+}

@@ -40,7 +40,6 @@ function jobSearch() {
       var responseStatus = response.status;
       if (responseStatus !== 200) {
         resultsCards.textContent = "Error: " + responseStatus + " | Please refresh the page and try again";
-        resultsCards.css("background-color", "white");
       }
       return response.json();
     })
@@ -139,7 +138,7 @@ function getSkills(){
              cardFooter.className = "card-footer"; 
              cardTitle.textContent = jobTitles[counter];
              counter++
-             cardHeader.appendChild(cardTitle);   
+             cardHeader.appendChild(cardTitle);
             for(var j = 0; j<10; j++){
                 //random "i" value to get a random skill and its description
                  var randomI= Math.floor(Math.random()*data.skills.length)
@@ -158,7 +157,6 @@ function getSkills(){
                //Appending content here
                resultsCards.appendChild(createCardColumn);
                createCardColumn.appendChild(cardHeader);
-               
                createCardColumn.appendChild(cardContent);
                cardContent.appendChild(innerCardContent);
                createCardColumn.appendChild(cardFooter); 

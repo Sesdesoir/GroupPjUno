@@ -121,7 +121,7 @@ function getSkills(){
             respond.json().then(function(data){
              //html element creation
              var createCardColumn = document.createElement('div');
-             createCardColumn.className = "card collumn is-full";
+             createCardColumn.className = "card column is-full";
              var cardHeader = document.createElement('header');
              cardHeader.className = "card-header";
              var cardTitle = document.createElement('h2');

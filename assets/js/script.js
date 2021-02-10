@@ -39,7 +39,7 @@ function jobSearch() {
     .then(function (response) {
       var responseStatus = response.status;
       if (responseStatus !== 200) {
-        resultsCards.textContent = "Error: " + responseStatus + " | Please refresh the page and try again"
+        resultsCards.textContent = "Error: " + responseStatus + " | Please refresh the page and try again";
       }
       return response.json();
     })
@@ -65,7 +65,12 @@ function jobSearch() {
 
         // Populating the cards with info about job search results
         cardTitle.textContent = data[i].title;
-        innerCardContent.textContent = "Company: " + data[i].company + " | Location: " + data[i].location;
+        // Some of the company URLs are not provided or, annoyingly, just "http:". This conditional links the company url only if the URL provided by the API is not empty or "http:"
+        if (data[i].company_url !== null && data[i].company_url !== "http:") {
+          innerCardContent.innerHTML = "<strong>Company: </strong><a href=" + data[i].company_url + ">" + data[i].company + "</a>"+ "<br><strong> Location: </strong>" + data[i].location + " (" + data[i].type + ")";
+        } else {
+          innerCardContent.innerHTML = "<strong>Company: </strong>" + data[i].company + "<br><strong> Location: </strong>" + data[i].location + " (" + data[i].type + ")";
+        }
         cardLink.textContent = "Click here to learn more";
         cardLink.href = data[i].url;
 
@@ -83,3 +88,88 @@ function jobSearch() {
 });
 }
 
+// Skill search button call
+
+$("#skill-search").click(function (event) {
+  event.preventDefault();
+    if ($('input').val().length === 0) {
+      //  && $('#zipcode').val().length === 0 (This code will be added to the above if statement when we add location search functionality)
+        alert("No entry detected! Please enter an occupation.");
+    } else {
+        getSkills();
+    }
+});
+
+// Skill search function
+
+function getSkills(){
+  resultsCards.innerHTML = ""
+    var uuids = [];
+    var jobTitles = [];
+    var counter=0;
+    //first fetch
+    fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=" + document.getElementById("search-bar").value).then(function(response){
+        if(response.ok){
+        response.json().then(function(apidata) {
+            for(var i=0; i<10; i++){
+            uuids.push(apidata[i].uuid);
+            jobTitles.push(apidata[i].suggestion);
+            }  
+        }).then(function(){
+            //second fetch
+            //
+            //I need this part done per job
+            for(var i=0; i<uuids.length; i++){
+            fetch("http://api.dataatwork.org/v1/jobs/" + uuids[i] + "/related_skills").then(function(respond){
+            if(respond.ok){
+            respond.json().then(function(data){
+             //html element creation
+             var createCardColumn = document.createElement('div');
+             createCardColumn.className = "card column is-full";
+             var cardHeader = document.createElement('header');
+             cardHeader.className = "card-header";
+             var cardTitle = document.createElement('h2');
+             cardTitle.className = "card-header-title is-centered";
+             var cardContent = document.createElement('div');
+             cardContent.className = "card-content";
+             var innerCardContent = document.createElement('div');
+             innerCardContent.className = "content";
+             var cardFooter = document.createElement('footer');
+             cardFooter.className = "card-footer"; 
+             cardTitle.textContent = jobTitles[counter];
+             counter++
+             cardHeader.appendChild(cardTitle);
+            for(var j = 0; j<10; j++){
+                //random "i" value to get a random skill and its description
+                 var randomI= Math.floor(Math.random()*data.skills.length)
+                var skillName = data.skills[randomI].skill_name;
+                var skillDescription = data.skills[randomI].description;
+                var p4skill =document.createElement("p");
+                var p4description = document.createElement("p");
+                p4skill.className = "pskill";
+                p4description.className = "pdescription";
+                p4skill.textContent = skillName;
+                p4description.textContent = skillDescription;
+                innerCardContent.appendChild(p4skill);
+                innerCardContent.appendChild(p4description); 
+                //end of j for
+                }
+               //Appending content here
+               resultsCards.appendChild(createCardColumn);
+               createCardColumn.appendChild(cardHeader);
+               createCardColumn.appendChild(cardContent);
+               cardContent.appendChild(innerCardContent);
+               createCardColumn.appendChild(cardFooter); 
+            }) //end 2nd fetch function data
+            } // end 2nd api respond.ok
+        }) //end of 2nd fetch
+        } //end of for loop
+        })
+        //end first fetch if(response.ok)
+    }
+    //end first fetch
+    })
+    uuids = [];
+    jobTitles = [];
+//end function call
+}

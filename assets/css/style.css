@@ -60,11 +60,15 @@ p {
 
 .card-background{
     background-color: darkslategray;
+    color: white;
 }
-
 
 .has-bg-img { 
     background: url("../images/WebDev.jpg")
     center center; 
     background-size:cover; 
 }
+.pskill{
+    font-weight: bold;
+}
+

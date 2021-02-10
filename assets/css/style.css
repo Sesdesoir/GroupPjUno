@@ -59,10 +59,5 @@ p {
 
 .card-background{
     background-color: darkslategray;
-}
-
-align-content: right; 
-border: 1px solid black;
-border-left: 1px solid black;
-border-right: 1px solid black;
+    color: white;
 }

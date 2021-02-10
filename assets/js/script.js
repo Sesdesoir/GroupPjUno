@@ -8,7 +8,6 @@ function init() {
       $("#job-search").click(function (event) {
         event.preventDefault();
           if ($('input').val().length === 0) {
-            //  && $('#zipcode').val().length === 0 (This code will be added to the above if statement when we add location search functionality)
               alert("No entry detected! Please enter an occupation.");
           } else {
               jobSearch();
@@ -24,21 +23,14 @@ init()
 function jobSearch() {
     resultsCards.innerHTML = "";
     var searchTerm = "";
-    searchTerm = "description=" + document.getElementById("search-bar").value;
-
-    // These two commented out lines of code were for the location search bar, they'll be added to the final version later
-    // var searchLocation = "";
-    // searchLocation = "location=" + document.getElementById("location-bar").value;
-
-    // fetch request gets a list of jobs with the description
-    // var requestUrl = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json?' + searchTerm + "&" + searchLocation;
-    var requestUrl = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json?' + searchTerm;
+    searchTerm = document.getElementById("search-bar").value;
+    var requestUrl = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json?description=' + searchTerm;
 
   // Fetch request to Github Jobs API
   fetch(requestUrl)
     .then(function (response) {
       var responseStatus = response.status;
-      if (responseStatus !== 200) {
+      if (response.ok == false) {
         resultsCards.textContent = "Error: " + responseStatus + " | Please refresh the page and try again";
       }
       return response.json();
@@ -50,6 +42,7 @@ function jobSearch() {
         // Creating all the elements within the card
         var createCardColumn = document.createElement('div');
         createCardColumn.className = "card column is-one-fifth";
+        createCardColumn.style.height = "250px";
         var cardHeader = document.createElement('header');
         cardHeader.className = "card-header";
         var cardTitle = document.createElement('p');
@@ -117,7 +110,6 @@ function getSkills(){
             }  
         }).then(function(){
             //second fetch
-            //
             //I need this part done per job
             for(var i=0; i<uuids.length; i++){
             fetch("http://api.dataatwork.org/v1/jobs/" + uuids[i] + "/related_skills").then(function(respond){

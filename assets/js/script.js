@@ -39,7 +39,8 @@ function jobSearch() {
     .then(function (response) {
       var responseStatus = response.status;
       if (responseStatus !== 200) {
-        resultsCards.textContent = "Error: " + responseStatus + " | Please refresh the page and try again"
+        resultsCards.textContent = "Error: " + responseStatus + " | Please refresh the page and try again";
+        resultsCards.css("background-color", "white");
       }
       return response.json();
     })
@@ -88,16 +89,29 @@ function jobSearch() {
 });
 }
 
-//insert button call here
+// Skill search button call
 
-function getskills(){
+$("#skill-search").click(function (event) {
+  event.preventDefault();
+    if ($('input').val().length === 0) {
+      //  && $('#zipcode').val().length === 0 (This code will be added to the above if statement when we add location search functionality)
+        alert("No entry detected! Please enter an occupation.");
+    } else {
+        getSkills();
+    }
+});
+
+// Skill search function
+
+function getSkills(){
+  resultsCards.innerHTML = ""
     var uuids = [];
     var jobTitles = [];
     var counter=0;
     //first fetch
-    fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=teacher").then(function(response){
+    fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=" + document.getElementById("search-bar").value).then(function(response){
         if(response.ok){
-        response.json().then(function(apidata)
+        response.json().then(function(apidata) {
             for(var i=0; i<10; i++){
             uuids.push(apidata[i].uuid);
             jobTitles.push(apidata[i].suggestion);

@@ -33,10 +33,11 @@ p {
     border: 1px solid white;   
 }
 
-.card-header-title {
+.card-header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    
 }
 
 .topbox{
@@ -62,6 +63,12 @@ p {
     color: white;
 }
 
+.has-bg-img { 
+    background: url("../images/WebDev.jpg")
+    center center; 
+    background-size:cover; 
+}
 .pskill{
     font-weight: bold;
 }
+

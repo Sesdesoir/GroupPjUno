@@ -104,10 +104,14 @@ function getSkills(){
     fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=" + document.getElementById("search-bar").value).then(function(response){
         if(response.ok){
         response.json().then(function(apidata) {
-            for(var i=0; i<10; i++){
+          for(var i=0; i< 10; i++){
+            if(i > apidata.length -1){
+              return
+            }
+            else{
             uuids.push(apidata[i].uuid);
-            jobTitles.push(apidata[i].suggestion);
-            }  
+            jobTitles.push(apidata[i].suggestion);}
+            }
         }).then(function(){
             //second fetch
             //I need this part done per job
@@ -117,7 +121,7 @@ function getSkills(){
             respond.json().then(function(data){
              //html element creation
              var createCardColumn = document.createElement('div');
-             createCardColumn.className = "card column is-full";
+             createCardColumn.className = "card collumn is-full";
              var cardHeader = document.createElement('header');
              cardHeader.className = "card-header";
              var cardTitle = document.createElement('h2');
@@ -158,6 +162,15 @@ function getSkills(){
         } //end of for loop
         })
         //end first fetch if(response.ok)
+    }
+    else{
+      var createCardColumn = document.createElement('div');
+      createCardColumn.className = "card collumn is-full";
+      var cardHeader = document.createElement('header');
+      cardHeader.className = "card-header"
+      cardHeader.textContent = "Error: " + response.status + " | Job not found";
+      resultsCards.appendChild(createCardColumn);
+      createCardColumn.appendChild(cardHeader);
     }
     //end first fetch
     })

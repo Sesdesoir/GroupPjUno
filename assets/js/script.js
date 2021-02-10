@@ -156,7 +156,7 @@ function getSkills(){
     }
     else{
       var createCardColumn = document.createElement('div');
-      createCardColumn.className = "card collumn is-full";
+      createCardColumn.className = "card column is-full";
       var cardHeader = document.createElement('header');
       cardHeader.className = "card-header"
       cardHeader.textContent = "Error: " + response.status + " | Job not found";

@@ -7,11 +7,7 @@ function init() {
   $(document).ready(function () {
       $("#job-search").click(function (event) {
         event.preventDefault();
-          if ($('input').val().length === 0) {
-              alert("No entry detected! Please enter an occupation.");
-          } else {
-              jobSearch();
-          }
+        jobSearch();
       });
   });
 }
@@ -85,12 +81,7 @@ function jobSearch() {
 
 $("#skill-search").click(function (event) {
   event.preventDefault();
-    if ($('input').val().length === 0) {
-      //  && $('#zipcode').val().length === 0 (This code will be added to the above if statement when we add location search functionality)
-        alert("No entry detected! Please enter an occupation.");
-    } else {
-        getSkills();
-    }
+  getSkills();
 });
 
 // Skill search function

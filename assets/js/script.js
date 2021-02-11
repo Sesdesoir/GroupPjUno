@@ -7,6 +7,7 @@ function init() {
   $(document).ready(function () {
       $("#job-search").click(function (event) {
         event.preventDefault();
+        saveSearch();
         jobSearch();
       });
   });
@@ -14,6 +15,17 @@ function init() {
 
 // Run the initialization function
 init()
+
+// Saves searches to local storage as an array
+function saveSearch() {
+  if (JSON.parse(localStorage.getItem("search-history")) !== null) {
+    var history = JSON.parse(localStorage.getItem("search-history"));
+  } else {
+    var history = [];
+  }
+  history.push(document.getElementById("search-bar").value);
+  localStorage.setItem("search-history", JSON.stringify(history));
+}
 
 // This function searches the Github Jobs API for listings based on input, then loads the results to the page
 function jobSearch() {
@@ -81,6 +93,7 @@ function jobSearch() {
 
 $("#skill-search").click(function (event) {
   event.preventDefault();
+  saveSearch();
   getSkills();
 });
 
